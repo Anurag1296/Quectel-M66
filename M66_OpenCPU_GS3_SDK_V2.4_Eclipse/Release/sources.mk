@@ -27,6 +27,7 @@ custom/config \
 custom/App/cJSON \
 custom/App/Relay_Control \
 custom/App/RGB-Control \
+custom/App/Charger_JSON \
 custom/App/Charger_Configuration \
 custom/App/Bluetooth_Configuration \
 

@@ -8,14 +8,13 @@
 #include "BT_Configuration.h"
 
 BTParam Bluetooth;
+ST_BT_BasicInfo *pstNewBtdev = NULL;
+ST_BT_BasicInfo *pstconBtdev = NULL;
 
 #ifdef BT_CLASSIC
 
 static void vBtCallback(s32 event, s32 errCode, void* param1, void* param2)
 {
-    ST_BT_BasicInfo *pstNewBtdev = NULL;
-    ST_BT_BasicInfo *pstconBtdev = NULL;
-    s32 ret = RIL_AT_SUCCESS;
     s32 connid = -1;
 
     switch(event)
@@ -27,9 +26,6 @@ static void vBtCallback(s32 event, s32 errCode, void* param1, void* param2)
                 APP_DEBUG("Scan is over.\r\n");
                 //APP_DEBUG("Pair/Connect if need.\r\n");
                 RIL_BT_GetDevListInfo();
-                //here obtain ril layer table list for later use
-                g_dev_info = RIL_BT_GetDevListPointer();
-                g_pair_search = TRUE;
             }
             if(URC_BT_SCAN_FOUND == errCode)
             {
@@ -87,15 +83,19 @@ static void vBtCallback(s32 event, s32 errCode, void* param1, void* param2)
               {
                 APP_DEBUG("Connect failed.\r\n");
               }
-
+              
               break;
 
          case MSG_BT_RECV_IND :
-
-             connid = *(s32 *)param1;
-             pstconBtdev = (ST_BT_BasicInfo *)param2;
-             Ql_memcpy(&pSppRecHdl,pstconBtdev,sizeof(pSppRecHdl));
-             APP_DEBUG("SPP receive data from BTHdl[0x%08x].\r\n",pSppRecHdl.devHdl);
+          pstconBtdev = (ST_BT_BasicInfo*)param1;
+             Bluetooth.btReadAcLen = 0;
+             #define  SppSendBuff      "Anurag"
+             s32 ret = 0 ;
+             Ql_memset(Bluetooth.btRead,0,sizeof(Bluetooth.btRead));
+            RIL_BT_SPP_Read(pSppRecHdl.devHdl, Bluetooth.btRead, sizeof(Bluetooth.btRead),&Bluetooth.btReadAcLen);
+            ret = RIL_BT_SPP_Send(pstconBtdev->devHdl,SppSendBuff,Ql_strlen(SppSendBuff),NULL);
+            APP_DEBUG("%d \n", ret);
+            APP_DEBUG("BTHdl[%x][len=%d]:\r\n%s\r\n",pSppRecHdl.devHdl,Bluetooth.btReadAcLen,Bluetooth.btRead);
              break;
 
          case MSG_BT_PAIR_REQ:
@@ -131,8 +131,9 @@ static void vBtCallback(s32 event, s32 errCode, void* param1, void* param2)
             APP_DEBUG("BTHdl: 0x%08x\r\n",pstconBtdev->devHdl);
             APP_DEBUG("Addr: %s\r\n",pstconBtdev->addr);
             APP_DEBUG("Name: %s\r\n",pstconBtdev->name);
-
             APP_DEBUG("Waiting connect accept.\r\n");
+            RIL_BT_ConnAccept(TRUE,BT_SPP_CONN_MODE_BUF);
+            break;
 
        case  MSG_BT_DISCONN_IND :
 
@@ -140,10 +141,7 @@ static void vBtCallback(s32 event, s32 errCode, void* param1, void* param2)
              {
                 APP_DEBUG("Disconnect ok!\r\n");
              }
-
           break;
-
-
         default :
             break;
     }
@@ -152,14 +150,11 @@ static void vBtCallback(s32 event, s32 errCode, void* param1, void* param2)
 
 void vBluetoothInit(void)
 {
-    s32 ret = RIL_AT_FAILED ;
-    // s32 ret = RIL_AT_SUCCESS;
     /**
      * @fn Ql_RIL_Initialize()
      * @brief This function initializes RIl-related functions. and sets the initial AT commands 
     */
 	 Ql_RIL_Initialize();
-    APP_DEBUG("After Ql_RIL_Initialize.  ret = %d \r\n", ret);
     /**
      * @fn  RIL_BT_Switch(BL_POWERON);
      * @brief This function turn ON and OFF BT Communication 
@@ -193,19 +188,7 @@ void vBluetoothInit(void)
      * other mode is ignored. 
     */
     RIL_BT_SetVisble(BT_MODE_VISIBLE_FOREVER, BT_VISIBILITY_MODE_TIMEOUT);
-    /**
-     * 
-    */
-   while (ret != RIL_AT_SUCCESS)
-   {
-    ret = RIL_BT_ConnAccept(TRUE,BT_SPP_CONN_MODE_TRANS);
-    if(RIL_AT_SUCCESS != ret) 
-        APP_DEBUG("Pairing failed!\r\n");
-    if(RIL_AT_SUCCESS == ret)
-    	APP_DEBUG("Pairing Sucessfull. \n");
-    Ql_Sleep(DELAY_IN_MILLIS_500);
-   }
-
 }
 
 #endif
+  

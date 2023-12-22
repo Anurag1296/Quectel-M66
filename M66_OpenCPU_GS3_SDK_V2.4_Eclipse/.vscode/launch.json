@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Admin/Documents/Quectel/M66_OpenCPU_GS3_SDK_V2.4_Eclipse/custom",
-      "program": "c:/Users/Admin/Documents/Quectel/M66_OpenCPU_GS3_SDK_V2.4_Eclipse/custom/build/Debug/outDebug",
+      "cwd": "c:/Users/Admin/Documents/Quectel/M66_OpenCPU_GS3_SDK_V2.4_Eclipse/example",
+      "program": "c:/Users/Admin/Documents/Quectel/M66_OpenCPU_GS3_SDK_V2.4_Eclipse/example/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -24,6 +24,9 @@
 #define BT_MODE_INVISBLE_FOREVER        0
 #define BT_MODE_VISIBLE_FOREVER         1
 #define BT_MODE_VISIBLE_TMEPORARY       2
+#define BT_MODE_SCAN_TIMEOUT_IN_SEC     10
+#define BT_MAX_NUM_DEVICE_SCAN          5
+#define BT_MAX_NUM_CLASS_OF_DEVICE      0
 /**
  * @brief When mode is set to "BT_MODE_VISIBLE_TMEPORARY", this timeout decides which time bluetooth can be fond
  * by others and this value can be in between 1-255
@@ -31,15 +34,17 @@
 #define BT_VISIBILITY_MODE_TIMEOUT      60   // in seconds 
 
 
-ST_BT_DevInfo **g_dev_info;
+
 ST_BT_BasicInfo pSppRecHdl;
-bool g_pair_search ;
 char pinCode[BT_PIN_LEN];
 ST_BT_DevInfo BTSppDev1;
 
 typedef struct  
 {
+ST_BT_DevInfo **gDevInfo;
 char btName[BT_NAME_LEN];
+u8 btRead[1024];
+u32 btReadAcLen;
 }BT_ParamStruct;
 
 typedef BT_ParamStruct BTParam;

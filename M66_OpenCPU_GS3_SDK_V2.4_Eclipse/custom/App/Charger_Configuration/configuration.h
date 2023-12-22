@@ -109,9 +109,6 @@ void vTimerInit(u8 heartbeatRate, u8 sessionRate);
 #define NEXT_LINE_OBJECT_WITH_DOUBLE_TAB            "\n\t\t"
 #define HEARTBEAT_PACKET_END                        "\n}\n}\n}"
 char mqttSting[250] ;
-
-//char *xSendMqttData(float cKwh, float kwh, float current,u8 state, u8 reconnect, char *packet_Name, u8 version);
-
 #endif /***********CHARGER_INFO***********/
 
 #endif /*******CHARGER_CONFIGURATION_H_******/

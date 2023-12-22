@@ -1,6 +1,7 @@
-custom/main.d: ../custom/main.c \
- C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\RGB-Control/RGB.h \
- C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App/Charger_Configuration/configuration.h \
+custom/App/Charger_JSON/Charger_Json.d: \
+ ../custom/App/Charger_JSON/Charger_Json.c \
+ ../custom/App/Charger_JSON/Charger_JSON.h \
+ C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_Configuration/configuration.h \
  C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\include/ql_trace.h \
  C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\include/ql_type.h \
  C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\include/ql_system.h \
@@ -19,14 +20,11 @@ custom/main.d: ../custom/main.c \
  C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\include/ql_timer.h \
  C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\ril\inc/ril_bluetooth.h \
  C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\ril\inc/ril.h \
- C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App/cJSON/cJSON.h \
- C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Bluetooth_Configuration/BT_Configuration.h \
- C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_Configuration/configuration.h \
- C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_JSON/Charger_JSON.h
+ C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App/cJSON/cJSON.h
 
-C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\RGB-Control/RGB.h:
+../custom/App/Charger_JSON/Charger_JSON.h:
 
-C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App/Charger_Configuration/configuration.h:
+C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_Configuration/configuration.h:
 
 C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\include/ql_trace.h:
 
@@ -65,9 +63,3 @@ C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\ril\inc/ril_bl
 C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\ril\inc/ril.h:
 
 C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App/cJSON/cJSON.h:
-
-C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Bluetooth_Configuration/BT_Configuration.h:
-
-C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_Configuration/configuration.h:
-
-C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_JSON/Charger_JSON.h:

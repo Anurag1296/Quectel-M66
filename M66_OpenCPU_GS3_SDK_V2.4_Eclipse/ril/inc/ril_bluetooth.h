@@ -719,7 +719,5 @@ s32 RIL_BT_Disconnect(BT_DEV_HDL hdlDevice);
 s32 RIL_BT_SPP_Read(BT_DEV_HDL hdlDevice, u8* ptrBuffer, u32 lenToRead ,u32 *actualReadlen);
 
 
-
-
 #endif	//__RIL_BLUETOOTH_H__
 

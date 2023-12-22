@@ -15,6 +15,7 @@ RM := cs-rm -rf
 -include custom/App/cJSON/subdir.mk
 -include custom/App/Relay_Control/subdir.mk
 -include custom/App/RGB-Control/subdir.mk
+-include custom/App/Charger_JSON/subdir.mk
 -include custom/App/Charger_Configuration/subdir.mk
 -include custom/App/Bluetooth_Configuration/subdir.mk
 -include custom/subdir.mk
@@ -53,7 +54,7 @@ all: APPGS3MDM32A01.elf secondary-outputs
 APPGS3MDM32A01.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Windows GCC C Linker (Sourcery Lite Bare)'
-	arm-none-eabi-gcc -T"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\libs\gcc\linkscript.ld" -nostartfiles -Xlinker --gc-sections -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\libs\gcc" -L"${GCC_PATH}\arm-none-eabi\lib\thumb" -L"${GCC_PATH}\lib\gcc\arm-none-eabi\4.7.2\thumb" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_Configuration" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\cJSON" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Bluetooth_Configuration" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\RGB-Control" -Wl,-Map,"APPGS3MDM32A01.map" -Rbuild -march=armv5te -mthumb-interwork -mfloat-abi=soft -o "APPGS3MDM32A01.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -T"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\libs\gcc\linkscript.ld" -nostartfiles -Xlinker --gc-sections -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\libs\gcc" -L"${GCC_PATH}\arm-none-eabi\lib\thumb" -L"${GCC_PATH}\lib\gcc\arm-none-eabi\4.7.2\thumb" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_Configuration" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\cJSON" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Bluetooth_Configuration" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\RGB-Control" -L"C:\Users\Admin\Documents\Quectel\M66_OpenCPU_GS3_SDK_V2.4_Eclipse\custom\App\Charger_JSON" -Wl,-Map,"APPGS3MDM32A01.map" -Rbuild -march=armv5te -mthumb-interwork -mfloat-abi=soft -o "APPGS3MDM32A01.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
